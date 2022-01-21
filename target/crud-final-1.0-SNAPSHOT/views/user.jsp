@@ -15,6 +15,7 @@
 </head>
 <body>
 <h1>Acceso garantizado</h1>
-
+<h2><% User user = (User) session.getAttribute("user");
+    out.println ("Bienvenido: " + user.getUser()); %></h2>
 </body>
 </html>
