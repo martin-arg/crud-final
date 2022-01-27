@@ -16,15 +16,21 @@ public class userController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        response.sendRedirect("user.jsp");
+
 
         try (PrintWriter out = response.getWriter()) {
 
-            String userName = request.getParameter("user");
+            String userEmail = request.getParameter("user");
+//            String userName = request.getParameter("user");
+//            String userLastname = request.getParameter("")
             String userPass = request.getParameter("password");
-            User user = new User(userName, userPass);
+//            String userPhone = request.getParameter("phone");
+
+            User user = new User(userEmail, userPass);
+
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+//            session.setAttribute("password", userPass);
             response.sendRedirect("./views/user.jsp");
 
 
