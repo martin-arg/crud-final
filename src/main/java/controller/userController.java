@@ -1,5 +1,6 @@
 package controller;
 
+import database.UserDAO;
 import model.User;
 
 import javax.servlet.ServletException;
@@ -10,32 +11,49 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
-@WebServlet(name = "userController", urlPatterns = {"/userController"})
+@WebServlet(name = "userController", urlPatterns = {"/user/*"})
 public class userController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-
         try (PrintWriter out = response.getWriter()) {
 
-            String userEmail = request.getParameter("user");
-//            String userName = request.getParameter("user");
-//            String userLastname = request.getParameter("")
-            String userPass = request.getParameter("password");
-//            String userPhone = request.getParameter("phone");
-
-            User user = new User(userEmail, userPass);
-
+            String path = request.getPathInfo();
+            UserDAO userDB = new UserDAO();
             HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-//            session.setAttribute("password", userPass);
-            response.sendRedirect("./views/user.jsp");
+            switch (path) {
+                case "/login":
 
+                    String userName = request.getParameter("user");
+                    String userPass = request.getParameter("password");
 
+                    boolean login = userDB.login(userName, userPass);
+
+                    session.setAttribute("userName", userName);
+
+                    if (login) {
+                        response.sendRedirect("/views/user.jsp");
+                        session.setAttribute("islogin", login);
+                    } else {
+                        response.sendRedirect("/views/login.jsp");
+                    }
+
+                    break;
+
+                               case "/logout" :
+                     session.setAttribute("isLogin", false);
+                     response.sendRedirect("/");
+                     break;
+
+                default:
+                    break;
+            }
+
+        } catch (SQLException err) {
+            err.printStackTrace();
         }
-
 
     }
 
@@ -56,5 +74,6 @@ public class userController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+
 
 }

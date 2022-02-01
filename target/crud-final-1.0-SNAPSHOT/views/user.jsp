@@ -1,46 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: marti
-  Date: 20/1/2022
-  Time: 16:17
-  To change this template use File | Settings | File Templates.
---%>
-
-<%@page import="model.User" %>
 <%@ page import="database.UserDAO" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-    <title>Entro</title>
-</head>
-<body>
-<h1>Metodos para obetener infomarcion</h1>
-<h2> usando session</h2>
-<%  UserDAO userDB = new UserDAO();
-    User user = (User) session.getAttribute("user");
-    String usuario = user.getEmail();
-    String clave = user.getPassword();
-    boolean login = userDB.login(usuario, clave);
-%>
-<h3><% out.println("Bienvenido: " + usuario); %></h3>
-<h4><% out.println("Tenes la password: " + clave); %></h4>
+<%@ page import="model.User" %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="./partials/header.jsp" %>
+<main class="container d-flex flex-column align-items-center gap-2 justify-content-center" >
 
 
+
+<p>Bienvenido al sistema</p>
 <p>
-
-<% if (login) {
-%>
-<h4> Esta logueado</h4>
-<%
-} else {
-%>
-<h4> No esta logueado</h4>
-<%
-}
-%>
+    <% String nombreUsuario = (String) session.getAttribute("userName");
+    out.println("Bienvenido "+ nombreUsuario);
+    %>
 </p>
 
-</body>
-</html>
+
+
+
+
+
+</main>
+<%@include file="./partials/footer.jsp" %>

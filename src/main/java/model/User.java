@@ -1,24 +1,34 @@
 package model;
 
 public class User {
+    private String userName;
     private String name;
     private String password;
     private String lastname;
     private String email;
-    private int phone;
+    private String phone;
 
 
-    public User(String email, String password) {
+    public User(String userName, String password) {
         this.password = password;
-        this.email = email;
+        this.userName = userName;
     }
 
-    public User(String name, String lastname, String password, String email, int phone) {
+    public User(String userName, String name, String lastname, String password, String email, String phone) {
+        this.userName = userName;
         this.name = name;
         this.password = password;
         this.lastname = lastname;
         this.email = email;
         this.phone = phone;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {
@@ -53,11 +63,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }
