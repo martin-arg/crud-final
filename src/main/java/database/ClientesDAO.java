@@ -1,4 +1,5 @@
 package database;
+
 import config.DBConn;
 import model.Clientes;
 import model.User;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ClientesDAO {
     Connection connection;
 
-    public ClientesDAO(){
+    public ClientesDAO() {
         DBConn conn = new DBConn();
         connection = conn.getConnection("banco", "root", "919092mg");
     }
@@ -29,36 +30,34 @@ public class ClientesDAO {
 
     }
 
-    /*public ArrayList<Clientes> getClientes () throws SQLException {
+    public List<Clientes> getClientes(String userName) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
-        ArrayList<Clientes> clientesList = new ArrayList<Clientes>();
-        ps = connection.prepareStatement("SELECT * FROM banco.clientes WHERE usuario = ?");
-        ps.setString(1, "mgigli");
+        List<Clientes> clientesDB = new ArrayList<>();
+
+        ps = connection.prepareStatement("SELECT * FROM clientes WHERE oficial = ?");
+        ps.setString(1, userName);
         rs = ps.executeQuery();
 
-        while(rs.next()) {
-            Clientes clientes =  new Clientes();
-            clientes.setNombre(rs.getString("nombre"));
-            clientes.setApellido(rs.getString("apellido"));
-            clientes.setTelefono(rs.getString("telefono"));
-            clientes.setEmail(rs.getString("email"));
-            clientes.setCompania(rs.getString("compania"));
-            clientesList.add(clientes);
-        }
-        rs.close();
-        ps.close();
-        connection.close();
-        return clientesList;
-    }*/
+        while (rs.next()) {
 
-// TODO: 28/1/2022 traer todos los clientes segun usuario el usuario activo.
+            String nombre = (rs.getString("nombre"));
+            String apellido = (rs.getString("apellido"));
+            String telefono = (rs.getString("telefono"));
+            String email = (rs.getString("email"));
+            String compania = (rs.getString("compania"));
+            Clientes clientes = new Clientes(nombre, apellido, telefono, email, compania);
+            clientesDB.add(clientes);
+        }
+        return clientesDB;
+    }
+
+    // TODO: 28/1/2022 traer todos los clientes segun usuario el usuario activo.
 // SELECT * FROM banco.clientes Where usuario = 3;
 // TODO: 28/1/2022 agregar un cliente nuevo (debe estar asociado al usuario activo)
-    public boolean createClient (String nombre, String apellido, String telefono, String email, String compania, String adminCuenta) throws SQLException {
+    public boolean createClient(String nombre, String apellido, String telefono, String email, String compania, String adminCuenta) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
-
 
 
         ps = connection.prepareStatement("insert into `clientes` (`nombre`,`apellido`,`telefono`,`email`,`compania`,`oficial`) values (?, ?, ?, ?, ?, ?);");
@@ -78,7 +77,7 @@ public class ClientesDAO {
         if (rs.next()) {
             return true;
         }
-            return false;
+        return false;
     }
 // insert into `clientes` (`nombre`,`apellido`,`telefono`,`email`,`compania`,`usuario`) values (?, ?, ?, ?, ?, ?);
 // TODO: 28/1/2022 modificar un cliente, solo quien es el admin de la cuenta

@@ -42,10 +42,13 @@ public class userController extends HttpServlet {
 
                     break;
 
-                               case "/logout" :
-                     session.setAttribute("isLogin", false);
-                     response.sendRedirect("/");
-                     break;
+                case "/profile":
+                    break;
+
+                case "/logout":
+                    session.setAttribute("isLogin", false);
+                    response.sendRedirect("/");
+                    break;
 
                 default:
                     break;

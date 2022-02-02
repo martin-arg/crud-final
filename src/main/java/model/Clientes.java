@@ -17,10 +17,13 @@ public class Clientes {
         this.adminCuenta = adminCuenta;
     }
 
-
-
-
-
+    public Clientes(String nombre, String apellido, String telefono, String email, String compania) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.email = email;
+        this.compania = compania;
+    }
 
     public String getNombre() {
         return nombre;

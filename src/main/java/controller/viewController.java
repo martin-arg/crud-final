@@ -5,7 +5,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-@WebServlet(name = "viewController",  urlPatterns = {"/view/*"})
+
+@WebServlet(name = "viewController", urlPatterns = {"/view/*"})
 public class viewController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -13,10 +14,9 @@ public class viewController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String path = request.getPathInfo();
             switch (path) {
-                case "/registrar" :
+                case "/registrar":
                     response.sendRedirect("/views/registro.jsp");
                     break;
-
 
 
                 default:
@@ -26,24 +26,23 @@ public class viewController extends HttpServlet {
             }
 
 
-
         }
     }
 
     @Override
-    protected void doGet (HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
     @Override
-    protected void doPost (HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
     @Override
-    public String getServletInfo () {
+    public String getServletInfo() {
         return "Short description";
     }
 }
