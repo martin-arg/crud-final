@@ -1,6 +1,7 @@
 package model;
 
 public class Clientes {
+    private int id;
     private String nombre;
     private String apellido;
     private String telefono;
@@ -8,7 +9,8 @@ public class Clientes {
     private String compania;
     private String adminCuenta;
 
-    public Clientes(String nombre, String apellido, String telefono, String email, String compania, String adminCuenta) {
+    public Clientes(int id, String nombre, String apellido, String telefono, String email, String compania, String adminCuenta) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -17,12 +19,21 @@ public class Clientes {
         this.adminCuenta = adminCuenta;
     }
 
-    public Clientes(String nombre, String apellido, String telefono, String email, String compania) {
+    public Clientes(int id, String nombre, String apellido, String telefono, String email, String compania) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.email = email;
         this.compania = compania;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

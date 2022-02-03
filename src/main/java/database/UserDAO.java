@@ -33,6 +33,9 @@ public class UserDAO {
             String password = resultST.getString("password");
             user = new User(username, name, lastname, password, email, phone );
         }
+        preparedST.close();
+        resultST.close();
+        connection.close();
 
         return user;
     }
@@ -45,8 +48,12 @@ public class UserDAO {
         ps.setString(1, userInput);
         ps.setString(2, passInput);
         rs = ps.executeQuery();
+        boolean login =  rs.next();
+        ps.close();
+        rs.close();
+        connection.close();
 
-        return rs.next();
+        return login;
     }
 
 }

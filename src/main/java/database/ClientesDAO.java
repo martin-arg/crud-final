@@ -19,16 +19,16 @@ public class ClientesDAO {
         connection = conn.getConnection("banco", "root", "919092mg");
     }
 
-    public boolean tieneClientes(String username) throws SQLException {
-        PreparedStatement ps;
-        ResultSet rs;
-        ps = connection.prepareStatement("SELECT * FROM clientes WHERE oficial = ? ");
-        ps.setString(1, username);
-        rs = ps.executeQuery();
-
-        return rs.next();
-
-    }
+//    public boolean tieneClientes(String username) throws SQLException {
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        ps = connection.prepareStatement("SELECT * FROM clientes WHERE oficial = ? ");
+//        ps.setString(1, username);
+//        rs = ps.executeQuery();
+//
+//        return rs.next();
+//
+//    }
 
     public List<Clientes> getClientes(String userName) throws SQLException {
         PreparedStatement ps;
@@ -41,20 +41,19 @@ public class ClientesDAO {
 
         while (rs.next()) {
 
+            int id = rs.getInt("id");
             String nombre = (rs.getString("nombre"));
             String apellido = (rs.getString("apellido"));
             String telefono = (rs.getString("telefono"));
             String email = (rs.getString("email"));
             String compania = (rs.getString("compania"));
-            Clientes clientes = new Clientes(nombre, apellido, telefono, email, compania);
+            Clientes clientes = new Clientes(id, nombre, apellido, telefono, email, compania);
             clientesDB.add(clientes);
         }
         return clientesDB;
     }
 
-    // TODO: 28/1/2022 traer todos los clientes segun usuario el usuario activo.
-// SELECT * FROM banco.clientes Where usuario = 3;
-// TODO: 28/1/2022 agregar un cliente nuevo (debe estar asociado al usuario activo)
+
     public boolean createClient(String nombre, String apellido, String telefono, String email, String compania, String adminCuenta) throws SQLException {
         PreparedStatement ps;
         ResultSet rs;
@@ -74,12 +73,94 @@ public class ClientesDAO {
         ps.setString(1, nombre);
         ps.setString(2, apellido);
         rs = ps.executeQuery();
-        if (rs.next()) {
-            return true;
-        }
-        return false;
+
+        boolean exito = (rs.next());
+            ps.close();
+            rs.close();
+            connection.close();
+        return exito;
     }
 // insert into `clientes` (`nombre`,`apellido`,`telefono`,`email`,`compania`,`usuario`) values (?, ?, ?, ?, ?, ?);
 // TODO: 28/1/2022 modificar un cliente, solo quien es el admin de la cuenta
-// TODO: 28/1/2022 borrar un cliente
+
+    public boolean deleteCliente (int id) throws SQLException {
+        PreparedStatement ps;
+
+
+        ps = connection.prepareStatement("delete from clientes where id = ?");
+        ps.setInt(1, id);
+        int row = ps.executeUpdate();
+        ps.close();
+        connection.close();
+
+
+
+        if (row == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    public Clientes getCliente(int id) throws SQLException {
+        PreparedStatement preparedST;
+        ResultSet resultST;
+        Clientes cliente = null;
+
+        preparedST = connection.prepareStatement("select * from clientes where id = ?");
+        preparedST.setInt(1, id);
+        resultST = preparedST.executeQuery();
+        if (resultST.next()){
+            String name = resultST.getString("nombre");
+            String lastname = resultST.getString("apellido");
+            String phone = resultST.getString("telefono");
+            String email = resultST.getString("email");
+            String compania = resultST.getString("compania");
+            cliente = new Clientes(id, name, lastname, phone, email, compania );
+        }
+        preparedST.close();
+        resultST.close();
+        connection.close();
+
+        return cliente;
+    }
+
+    public boolean modificarCliente (int id, String nombre, String apellido, String telefono, String email, String compania) throws SQLException {
+        PreparedStatement ps;
+        //ResultSet rs;
+
+
+        ps = connection.prepareStatement("UPDATE clientes set nombre = ?, apellido = ?, telefono = ?, email = ?, compania = ? where id = ?");
+        ps.setString(1, nombre);
+        ps.setString(2, apellido);
+        ps.setString(3, telefono);
+        ps.setString(4, email);
+        ps.setString(5, compania);
+        ps.setInt(6, id);
+        int row = ps.executeUpdate();
+
+
+/*        ps = connection.prepareStatement("SELECT * FROM clientes WHERE nombre = ? and apellido = ? and telefono = ? and email = ? and compania = ?");
+        ps.setString(1, nombre);
+        ps.setString(2, apellido);
+        ps.setString(3, telefono);
+        ps.setString(4, email);
+        ps.setString(5, compania);
+        rs = ps.executeQuery();*/
+
+        //boolean exito = (rs.next());
+        ps.close();
+        //rs.close();
+        connection.close();
+        //return exito;
+        if (row == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 }

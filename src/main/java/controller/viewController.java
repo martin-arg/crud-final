@@ -18,6 +18,13 @@ public class viewController extends HttpServlet {
                     response.sendRedirect("/views/registro.jsp");
                     break;
 
+                case "/user" :
+                    response.sendRedirect("/views/user.jsp");
+                    break;
+                case "/mensaje" :
+                    response.sendRedirect("/views/userResponse.jsp");
+                    break;
+
 
                 default:
                     response.sendRedirect("/views/404.html");

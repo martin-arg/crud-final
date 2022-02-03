@@ -5,12 +5,12 @@
 <form method="POST" action="/user/login">
     <div class="mb-3">
         <label for="user" class="form-label">Usuario</label>
-        <input type="text" class="form-control" id="user" name="user">
+        <input type="text" class="form-control" id="user" name="user" value="mgigli">
         <div id="emailHelp" class="form-text">No comparta estos datos con nadie.</div>
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control"name="password" id="password">
+        <input type="password" class="form-control"name="password" id="password" value="1234">
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">

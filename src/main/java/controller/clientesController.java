@@ -48,17 +48,57 @@ public class clientesController extends HttpServlet {
 
                     boolean seCreo = clientesDB.createClient(nombre, apellido, telefono, email, compania, adminCuenta);
                     if (seCreo) {
-                        response.sendRedirect("/views/userCreateResponse.jsp");
-                        session.setAttribute("createMessage", seCreo);
+                        session.setAttribute("mensaje", "El cliente fue creado exitosamente");
+                        response.sendRedirect("/view/mensaje");
                     } else {
-                        session.setAttribute("createMessage", seCreo);
-                        response.sendRedirect("/views/userCreateResponse.jsp");
+                        session.setAttribute("mensaje", "El cliente no pudo ser creado");
+                        response.sendRedirect("/view/mensaje");
                     }
 
                     break;
-                case "/modificar":
+                case "/leer":
+                    int id2 = Integer.parseInt(request.getParameter("idCliente2"));
+                    Clientes clientes2 = clientesDB.getCliente(id2);
+                    session.setAttribute("id", id2);
+
+
+                    session.setAttribute("clientes2", clientes2);
+                    response.sendRedirect("/views/actualizar.jsp");
                     break;
+
+                case "/modificar":
+
+                    int id3 = (int) session.getAttribute("id");
+                    String nombre2 = request.getParameter("cliNombre");
+                    String apellido2 = request.getParameter("cliApellido");
+                    String telefono2 = request.getParameter("cliTelefono");
+                    String email2 = request.getParameter("cliEmail");
+                    String compania2 = request.getParameter("cliCompania");
+
+
+                    boolean seModifico = clientesDB.modificarCliente(id3, nombre2, apellido2, telefono2, email2, compania2);
+                    if (seModifico) {
+                        session.setAttribute("mensaje", "El cliente fue modificado exitosamente");
+                        response.sendRedirect("/view/mensaje");
+                    } else {
+                        session.setAttribute("mensaje", "El cliente no pudo ser modificado");
+                        response.sendRedirect("/view/mensaje");
+                    }
+
+                    break;
+
                 case "/borrar":
+                    int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+                    boolean seBorro = clientesDB.deleteCliente(idCliente);
+                    if (seBorro) {
+                        session.setAttribute("mensaje", "El cliente fue borrado exitosamente");
+                        response.sendRedirect("/view/mensaje");
+                    } else {
+                        session.setAttribute("mensaje", "El cliente no pudo ser borrado");
+                        response.sendRedirect("/view/mensaje");
+                    }
+
+
                     break;
 
                 default:
