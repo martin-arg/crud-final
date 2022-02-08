@@ -6,10 +6,10 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Bienvenido</title>
 </head>
-<body id="main-body">
+<body class="container-fluid" id="main-body">
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar navbar-expand-lg navbar-light text-white  bg-dark bg-gradient mt-3">
         <div class="container">
             <div class="collapse navbar-collapse justify-content-end" id="navbarText">
                 <%
@@ -22,22 +22,16 @@
                 %>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active text-white" aria-current="page" href="/view/inicio">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/clientes/listar">Clientes Actuales</a>
+                        <a class="nav-link text-white" href="/clientes/listar">Clientes Actuales</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/view/registrar#">Agregar cliente</a>
+                        <a class="nav-link text-white" href="/view/registrar#">Agregar cliente</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/clientes/modificar">Modiifiicar cliente</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/clientes/borrar">Borrar cleinte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/logout">Cerrar Sesión</a>
+                   <li class="nav-item">
+                        <a class="nav-link text-white" href="/user/logout">Cerrar Sesión</a>
                     </li>
                 </ul>
                 <%
@@ -45,14 +39,12 @@
                 %>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="views/login.jsp">Ingresa al sistema</a>
+                        <a class="nav-link active text-white" aria-current="page" href="/view/inicio">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Institucional</a>
+                        <a class="nav-link text-white" href="/view/login">Ingresa al sistema</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
+
                 </ul>
                 <%
                     }
@@ -61,3 +53,5 @@
         </div>
     </nav>
 </header>
+
+<main class=" d-flex flex-column vh-100 align-items-center gap-2 justify-content-center bg-primary" style="--bs-bg-opacity: .1;">

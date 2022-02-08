@@ -9,6 +9,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/partialUser/estaLogueado.html" value="file://$PROJECT_DIR$/src/main/webapp/views/partialUser" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/partialUser/estaLogueado.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/partialUser" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/partials/footer.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/partials" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/partials/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/partials" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/registro.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/user.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views" />

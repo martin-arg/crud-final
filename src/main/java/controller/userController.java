@@ -30,8 +30,10 @@ public class userController extends HttpServlet {
                     String userPass = request.getParameter("password");
 
                     boolean login = userDB.login(userName, userPass);
+                    String userNombre = userDB.getNombre(userName);
 
                     session.setAttribute("userName", userName);
+                    session.setAttribute("userNombre", userNombre);
 
                     if (login) {
                         response.sendRedirect("/views/user.jsp");
@@ -40,9 +42,6 @@ public class userController extends HttpServlet {
                         response.sendRedirect("/views/login.jsp");
                     }
 
-                    break;
-
-                case "/profile":
                     break;
 
                 case "/logout":

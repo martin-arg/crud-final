@@ -5,12 +5,12 @@
 <main class="container d-flex flex-column align-items-center gap-2 justify-content-center">
 
 
-    <p>Bienvenido al sistema</p>
-    <p>
-        <% String nombreUsuario = (String) session.getAttribute("userName");
-            out.println("Bienvenido " + nombreUsuario);
+
+    <h1>
+        <% String nombreUsuario = (String) session.getAttribute("userNombre");
+            out.println("Bienvenido al sistema " + nombreUsuario);
         %>
-    </p>
+    </h1>
 
 
 </main>

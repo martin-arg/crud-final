@@ -3,7 +3,7 @@
 <%@ page import="database.ClientesDAO"%>
 <%@ page import="model.Clientes"%>
 
-<main class="container mt-4 w-75">
+
     <%  String nombreUsuario = (String) session.getAttribute("userName");
     Clientes cliente = (Clientes) session.getAttribute("clientes2");
     String nombre = cliente.getNombre();
@@ -42,7 +42,7 @@
 
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </div>
     </form>
     <div class="col-md-12">

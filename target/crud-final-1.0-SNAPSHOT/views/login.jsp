@@ -1,7 +1,8 @@
 
 <%@include file="./partials/header.jsp" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<main  class="container d-flex flex-column align-items-center gap-2 justify-content-center" >
+<%--<main  class="container d-flex flex-column align-items-center gap-2 justify-content-center" >--%>
+
 <form method="POST" action="/user/login">
     <div class="mb-3">
         <label for="user" class="form-label">Usuario</label>
@@ -18,5 +19,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Ingresar</button>
 </form>
+
 </main>
 <%@include file="./partials/footer.jsp" %>

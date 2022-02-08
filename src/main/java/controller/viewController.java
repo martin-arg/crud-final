@@ -14,6 +14,9 @@ public class viewController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String path = request.getPathInfo();
             switch (path) {
+                case "/inicio" :
+                    response.sendRedirect("/");
+                    break;
                 case "/registrar":
                     response.sendRedirect("/views/registro.jsp");
                     break;
@@ -23,6 +26,10 @@ public class viewController extends HttpServlet {
                     break;
                 case "/mensaje" :
                     response.sendRedirect("/views/userResponse.jsp");
+                    break;
+
+                case "/login" :
+                    response.sendRedirect("/views/login.jsp");
                     break;
 
 

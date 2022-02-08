@@ -80,8 +80,7 @@ public class ClientesDAO {
             connection.close();
         return exito;
     }
-// insert into `clientes` (`nombre`,`apellido`,`telefono`,`email`,`compania`,`usuario`) values (?, ?, ?, ?, ?, ?);
-// TODO: 28/1/2022 modificar un cliente, solo quien es el admin de la cuenta
+
 
     public boolean deleteCliente (int id) throws SQLException {
         PreparedStatement ps;

@@ -5,9 +5,9 @@
 <main class="container d-flex flex-column align-items-center gap-2 justify-content-center">
 
 
-    <p>Bienvenido al sistema</p>
+    <h1>Bienvenido al sistema</h1>
     <p>
-        <% String nombreUsuario = (String) session.getAttribute("userName");
+        <% String nombreUsuario = (String) session.getAttribute("userNombre");
             out.println("Bienvenido " + nombreUsuario);
         %>
     </p>

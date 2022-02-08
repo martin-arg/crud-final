@@ -35,11 +35,28 @@ public class UserDAO {
         }
         preparedST.close();
         resultST.close();
-        connection.close();
+
 
         return user;
     }
+public String getNombre(String userName) throws SQLException {
+    PreparedStatement preparedST;
+    ResultSet resultST;
+    String nombre = null;
 
+    preparedST = connection.prepareStatement("select nombre from usuarios where usuario = ?");
+    preparedST.setString(1, userName);
+    resultST = preparedST.executeQuery();
+    if (resultST.next()){
+         nombre = resultST.getString("nombre");
+
+    }
+    preparedST.close();
+    resultST.close();
+
+
+        return nombre;
+}
 
     public boolean login(String userInput, String passInput) throws SQLException {
         PreparedStatement ps;
@@ -51,7 +68,7 @@ public class UserDAO {
         boolean login =  rs.next();
         ps.close();
         rs.close();
-        connection.close();
+
 
         return login;
     }
