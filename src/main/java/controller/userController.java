@@ -45,7 +45,7 @@ public class userController extends HttpServlet {
                     break;
 
                 case "/logout":
-                    session.setAttribute("isLogin", false);
+                    session.invalidate();
                     response.sendRedirect("/");
                     break;
 

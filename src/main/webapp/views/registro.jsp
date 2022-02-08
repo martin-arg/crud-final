@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="./partials/header.jsp" %>
-<main class="container mt-4 w-75">
+
     <%  String nombreUsuario = (String) session.getAttribute("userName"); %>
     <h1>Registro para nuevos clientes</h1>
     <form class="row g-3" method="POST" action="/clientes/registrar">

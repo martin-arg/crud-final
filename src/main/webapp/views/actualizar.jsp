@@ -13,7 +13,7 @@
     String compania = cliente.getCompania();
 
     %>
-
+<%@include file="./partialUser/barra.jsp" %>
     <h1>Formulario para la modificacion de clientes</h1>
     <form class="row g-3" method="POST" action="/clientes/modificar">
         <div class="row g-3">
@@ -33,7 +33,7 @@
 
         <div class="col-md-6">
             <label for="cliTelefono" class="form-label">Telefono</label>
-            <input type="number" class="form-control" id="cliTelefono" name="cliTelefono" value="<%=telefono%>">
+            <input type="text" class="form-control" id="cliTelefono" name="cliTelefono" value="<%=telefono%>">
         </div>
         <div class="col-md-6">
             <label for="cliCompania" class="form-label">Compania</label>
@@ -45,8 +45,8 @@
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </div>
     </form>
-    <div class="col-md-12">
-        <p>
+    <div class="col-md-6">
+        <p class="my-5">
             <%
                 out.println("Los cambios se registraran con el usuario: "+ nombreUsuario);
             %>

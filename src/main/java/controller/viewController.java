@@ -15,6 +15,7 @@ public class viewController extends HttpServlet {
             String path = request.getPathInfo();
             switch (path) {
                 case "/inicio" :
+                    // TODO: 8/2/2022 Agregar un if para que si este logueado vaya a user
                     response.sendRedirect("/");
                     break;
                 case "/registrar":
