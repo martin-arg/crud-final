@@ -13,7 +13,7 @@ public class UserDAO {
 
     public UserDAO(){
         DBConn conn = new DBConn();
-        connection = conn.getConnection("banco", "root", "919092mg");
+        connection = conn.getConnection("banco", "root", "");
     }
 
     public User getUser(String userName) throws SQLException {

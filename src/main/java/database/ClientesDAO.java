@@ -16,7 +16,7 @@ public class ClientesDAO {
 
     public ClientesDAO() {
         DBConn conn = new DBConn();
-        connection = conn.getConnection("banco", "root", "919092mg");
+        connection = conn.getConnection("banco", "root", "");
     }
 
 //    public boolean tieneClientes(String username) throws SQLException {
